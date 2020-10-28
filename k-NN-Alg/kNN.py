@@ -4,7 +4,7 @@ import operator         # operator 运算模块
 
 
 def createDataSet():
-    group = array([1.0 , 1.1] , [1.0 , 1.0] , [0 , 0] , [0 , 0.1])
+    group = np.array([1.0 , 1.1] , [1.0 , 1.0] , [0 , 0] , [0 , 0.1])
     labels = ['A' , 'A' , 'B' , 'B']
 
     return group , labels
@@ -30,7 +30,7 @@ def classify0(inX , dataSet , labels , k):
     1. 距离计算         (采用两点间的距离公式)
     """
     dataSize = dataSet.shape[0]                                 # 记录 dataSet 的行数
-    diffMat = tile(inX , (dataSize , 1)) - dataSet              # inX 重复 dataSize 行 ， 1 列
+    diffMat = np.tile(inX , (dataSize , 1)) - dataSet              # inX 重复 dataSize 行 ， 1 列
     sqDifMat = diffMat ** 2
     sqDistances = sqDifMat.sum(axis = 1)
     distances = sqDistances ** 0.5

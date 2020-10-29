@@ -97,7 +97,6 @@ def showDatas(datingDataMat , datingLabels):
 
 
 
-
 # 归一化特征值 : 公式 : newValues = (oldValue - min) / (max - min)
 def autoNorm(dataSet):
     minVals = dataSet.min(0)

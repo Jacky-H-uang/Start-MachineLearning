@@ -8,6 +8,40 @@ from matplotlib.font_manager import FontProperties
 
 
 
+# inX      --(输入向量)
+# dataSet  --(训练样本集)
+# labels   --(标签向量)
+# k        --(选择最近邻居的数目)
+def classify0(inX , dataSet , labels , k):
+    """ Three Steps """
+
+    """
+    1. 距离计算         (采用两点间的距离公式)
+    """
+    dataSize = dataSet.shape[0]                                 # 记录 dataSet 的行数
+    diffMat = tile(inX , (dataSize , 1)) - dataSet              # inX 重复 dataSize 行 ， 1 列
+    sqDifMat = diffMat ** 2
+    sqDistances = sqDifMat.sum(axis = 1)
+    distances = sqDistances ** 0.5
+    sortedDistIndicies = distances.argsort()                    # argsort() 排列索引从小到大
+
+    """
+    2. 选择最小的 k 个点 (即选择距离最近的 k 个点)
+    """
+    classCount = { }
+    for i in range(k):
+        voteIlabel = labels[sortedDistIndicies[i]]
+        classCount[voteIlabel] = classCount.get(voteIlabel , 0) + 1
+
+    """
+    3. 排序   --(itemgetter(1) 为排序目标为类型出现的次数)
+    """
+    sortedClassCount = sorted(classCount.items() , key = operator.itemgetter(1) , reverse = True)
+
+    # 返回出现次数最多的 label
+    return sortedClassCount[0][0]
+
+
 # 将文本记录转换为 NumPy 的解析程序
 def file2matrix(filename):
     fr = open(filename)
@@ -97,7 +131,8 @@ def showDatas(datingDataMat , datingLabels):
 
 
 
-# 归一化特征值 : 公式 : newValues = (oldValue - min) / (max - min)
+# 归一化特征值
+# Formula : newValues = (oldValue - min) / (max - min)
 def autoNorm(dataSet):
     minVals = dataSet.min(0)
     maxVals = dataSet.max(0)
@@ -110,8 +145,26 @@ def autoNorm(dataSet):
     return normDataSet , ranges , minVals
 
 
+# 测试数据  (This function is self-contained)
+def datingClassTest():
+    hoRatio = 0.10
+    datingDataMat , datingLabels = file2matrix('datingTestSet.txt')
+    normMat , ranges ,minVals = autoNorm(datingDataMat)
+    m = normMat.shape[0]
+    numTestVecs = int(m*hoRatio)
+    erroCount = 0.0
+    for i in range(numTestVecs):
+        classiferResult = classify0(normMat[i , :] , normMat[numTestVecs : m , :] , datingLabels[numTestVecs:m] , 3)
+        print("The classifier came back with : % d , the real answer is : %d" %(classiferResult , datingLabels[i]))
+
+        if classiferResult != datingLabels[i] : erroCount += 1.0
+
+    print("The total error rate is : %f" %(erroCount / float(numTestVecs)))
+
+
 
 if __name__ == '__main__':
-    filename = 'datingTestSet.txt'
-    datingDataMat , datingLabels = file2matrix(filename)
-    showDatas(datingDataMat , datingLabels)
+    # filename = 'datingTestSet.txt'
+    # datingDataMat , datingLabels = file2matrix(filename)
+    # showDatas(datingDataMat , datingLabels)
+    datingClassTest()

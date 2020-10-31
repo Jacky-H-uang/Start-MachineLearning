@@ -10,7 +10,7 @@
 
 
 
-### First：从文本解析数据
+### First：Parse data from text
 >文本特征：
 >
 > - 每年获得的飞行常客里程数 
@@ -20,13 +20,21 @@
 > - 每周消费的冰淇淋公升数
 
 
-### Second：分析数据
+### Second：Analyze Data
 > 使用 Matplotlib 创建可视化的散点图
 
 
-### Third：归一化数值
+### Third：Normalizing Data
 > - 在处理这种不同取值范围的特征值时，我们通常采用的方法是将数值归一化，如将取值范围
 > 处理为 0 到 1 或者 -1 到 1 之间。处理归一化的时候有公式：
-> newValue = (oldValue - min) / (max - min)
+> Formula : newValue = (oldValue - min) / (max - min)
 > 其中 min 和 max 分别表示最小特征值和最大特征值
 > 
+
+
+### Fourth：Testing the classifier as a whole program
+> - The error rate is the number of misclassified pieces of data
+> divided by the total number of data points tested.
+>
+> - An error rate of 0 means you have a perfect classifier,
+> and an error rate of 1.0 means yhe classifier is always wrong.

@@ -5,18 +5,11 @@
 - Using recursion to construct a decision tree.
 - Plotting trees in Matplotlib.
 
-### General approach to decision trees
-1. Collect : Any method.
-2. Prepare : This tree-building algorithm works only on nomial values , so any continuous values will need to be quantized.
-3. Analyze : Any merthod . You should visually inspect the tree after it is built.
-4. Train : Construct a tree data structure.
-5. Test : Calculate the error rate with the learned tree.
-6. Use : This can be used in ant supervised learning task.Often , trees are used to better understand the data.
 
 
+## Steps of the Implementing the Decision Trees:
 
-
-### Prerequisite knowledge: Information Theory.
+### 1. Prerequisite knowledge: Information Theory. (in directary Shannon-entropy)
 >Shannon entropy (香农熵):
 >
 >- Entropy is defined as the expected values of the infotmation.
@@ -28,3 +21,8 @@
 >- the Python codes to calculate is in file "Shannon-entropy"
 
 
+### 2. Building the Trees.     (in directary Tree-Building)
+> Using Recursion to Creating the Decision Trees
+
+### 3. Visualize the Decision Trees.    (in directary Plotting-Trees)
+> Using the Matplotlib of Python to plotting the Trees.

@@ -42,4 +42,7 @@
 
 
 - In Action 项目实战
-1. 关于 Filter 侮辱与非侮辱词汇的分类识别
+关于 Filter the Abusive and Not Abusive 词汇的分类识别
+
+
+- Summary:

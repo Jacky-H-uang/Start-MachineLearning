@@ -17,7 +17,7 @@
 
                          P(B|A)
         P(A|B) = P(A) * ---------
-                          P(A)
+                          P(B)
         上述公式的几个参数的定义 : 
         P(A)   : 先验概率
         P(A|B) : 后验概率
@@ -42,7 +42,7 @@
 
 
 - In Action 项目实战
-关于 Filter the Abusive and Not Abusive 词汇的分类识别
-
+1. 关于 Filter the Abusive and Not Abusive 词汇的分类识别
+2. Classify the Spam E-mail with Navie-Bayes.
 
 - Summary:

@@ -43,6 +43,6 @@
 
 - In Action 项目实战
 1. 关于 Filter the Abusive and Not Abusive 词汇的分类识别
-2. Classify the Spam E-mail with Navie-Bayes.
+2. Classify the Spam E-mails with Navie-Bayes.
 
 - Summary:
